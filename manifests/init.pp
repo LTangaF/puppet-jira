@@ -131,6 +131,11 @@ class jira (
 
 ) inherits jira::params {
 
+  # Added to module to enforce use of wrapper module and epcTagging. This should only exist on master branch and should
+  #   be rebased onto the branch if any updates are brought in from the community
+  require wf_jira
+  tag epcTag($module_name, $version)
+
   # Parameter validations
   validate_re($db, ['^postgresql','^mysql','^sqlserver','^oracle'], 'The JIRA $db parameter must be "postgresql", "mysql", "sqlserver".')
   validate_hash($proxy)
