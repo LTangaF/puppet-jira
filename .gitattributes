@@ -1,0 +1,3 @@
+*.sh.erb eol=lf
+jira.service.erb eol=lf
+jira.initscript.erb eol=lf
