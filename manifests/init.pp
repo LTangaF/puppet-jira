@@ -18,7 +18,7 @@
 # This module is used to install Jira.
 #
 # See README.md for more details
-# 
+#
 # === Authors
 #
 # Bryce Johnson
@@ -118,7 +118,7 @@ class jira (
   # Tomcat Tunables
   $tomcatMaxThreads  = '150',
   $tomcatAcceptCount = '100',
-  
+
   # Reverse https proxy
   $proxy = {},
   # Options for the AJP connector
@@ -155,7 +155,13 @@ class jira (
     }
   }
 
-  $webappdir    = "${installdir}/atlassian-${product}-${version}-standalone"
+  $extractdir = "${installdir}/atlassian-${product}-${version}-standalone"
+  if $format == zip {
+    $webappdir = "${extractdir}/atlassian-${product}-${version}-standalone"
+  } else {
+    $webappdir = $extractdir
+  }
+
   if $dburl {
     $dburl_real = $dburl
   }
