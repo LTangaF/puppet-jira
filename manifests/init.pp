@@ -131,9 +131,8 @@ class jira (
 
 ) inherits jira::params {
 
-  # Added to module to enforce use of wrapper module and epcTagging. This should only exist on master branch and should
-  #   be rebased onto the branch if any updates are brought in from the community
-  require wf_jira
+  # Added to module to enforce use of wrapper module and epcTagging. This should only exist on master branch
+  require jira_wrap
   tag epcTag($module_name, $version)
 
   # Parameter validations
